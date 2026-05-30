@@ -1,4 +1,4 @@
-# 👨‍💻 Victor Matheus Barros Trindade
+# Victor Matheus Barros Trindade
 **Business Development B2B | Automação e IA | Administração | Desenvolvedor Full-Stack**
 
 📍 Rio Grande, RS, Brasil | 📧 victor.matheus2018@outlook.com
@@ -7,7 +7,7 @@ Graduando em Administração com sólida trajetória em Vendas B2B e Atendimento
 
 ---
 
-## 🚀 Projetos em Destaque
+## Projetos em Destaque
 
 ### 1. Automação B2B com IA e Chatbot Integrado (WhatsApp)
 **O Problema:** Necessidade de triagem eficiente, alertas automáticos e aplicação de pesquisas de satisfação em larga escala sem aumento de custo operacional.
@@ -30,7 +30,7 @@ Graduando em Administração com sólida trajetória em Vendas B2B e Atendimento
 
 ---
 
-## 🛠️ Habilidades e Ferramentas
+## Habilidades e Ferramentas
 
 * **Tecnologia:** Python (Automação, Ferramentas), C++/C# (Lógica de Servidores), Desktop Apps, Integração de APIs (OpenAI/Google).
 * **Negócios:** Business Intelligence (BI), Automação de Workflows, Negociação B2B, Gestão de Operações de Varejo, Liderança de Equipes Multiculturais.
