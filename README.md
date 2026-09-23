@@ -7,7 +7,7 @@
   <a href="https://pintorprofissional.app.br">
     <img src="https://img.shields.io/badge/App_em_Produção-Pintor_Profissional-06b6d4?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Pintor Profissional">
   </a>
-  <a href="https://wa.me/5553991839984">
+  <a href="https://wa.me/5551989693906">
     <img src="https://img.shields.io/badge/WhatsApp-(53)_99183--9984-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="WhatsApp">
   </a>
   <a href="mailto:victor.matheus2018@outlook.com">
