@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victor Matheus | Desenvolvedor Full-Stack, IA & Soluções Digitais</title>
+    <meta name="description" content="Portfólio de Victor Matheus. Criação de sites, PWAs, automações de WhatsApp com IA e soluções sob medida com alta performance.">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Inter & Space Grotesk & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Inter"', 'sans-serif'],
+                        display: ['"Space Grotesk"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        dark: {
+                            950: '#06080d',
+                            900: '#0b0f17',
+                            850: '#101622',
+                            800: '#172030',
+                            border: 'rgba(255, 255, 255, 0.08)',
+                            borderHover: 'rgba(59, 130, 246, 0.4)',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #06080d;
+            color: #f1f5f9;
+            overflow-x: hidden;
+            font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+        }
+
+        /* Grid de fundo sutil de engenharia */
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        }
+
+        /* 2. BOTÕES MAGNÉTICOS */
+        .magnetic-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            will-change: transform;
+            cursor: pointer;
+        }
+
+        /* 3. SPOTLIGHT CARD (Linear / Vercel style) */
+        .spotlight-card {
+            position: relative;
+            background-color: #0b0f17;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: border-color 0.3s ease, transform 0.3s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.3s ease;
+        }
+
+        .spotlight-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(800px circle at var(--mouse-x, -500px) var(--mouse-y, -500px), rgba(59, 130, 246, 0.09), transparent 40%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .spotlight-card:hover::before {
+            opacity: 1;
+        }
+
+        .spotlight-card:hover {
+            border-color: rgba(59, 130, 246, 0.35);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 30px -10px rgba(59, 130, 246, 0.15);
+        }
+
+        /* 3D Tilt suave */
+        .tilt-card {
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1);
+        }
+
+        /* Animação suave de Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s cubic-bezier(0.2, 0, 0, 1), transform 0.7s cubic-bezier(0.2, 0, 0, 1);
+            will-change: opacity, transform;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Barra de progresso do scroll */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #06b6d4, #10b981);
+            z-index: 100;
+            width: 0%;
+            transition: width 0.1s ease-out;
+        }
+
+        /* Linha do tempo com scroll luminoso */
+        .timeline-track {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .timeline-fill {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2px;
+            height: 0%;
+            background: linear-gradient(180deg, #3b82f6 0%, #06b6d4 50%, #10b981 100%);
+            box-shadow: 0 0 10px rgba(6, 182, 212, 0.8);
+            transition: height 0.15s ease-out;
+        }
+
+        .glow-dot {
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.6);
+        }
+
+        /* Scrollbar customizada */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #06080d;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #172030;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #25334d;
+        }
+    </style>
+</head>
+<body class="selection:bg-blue-600 selection:text-white text-sm md:text-base leading-relaxed bg-grid-pattern relative">
+
+    <!-- 2. SCROLL PROGRESS BAR -->
+    <div id="scroll-progress"></div>
+
+    <!-- 3. REDE DE PARTÍCULAS EM CANVAS (OPÇÃO 4 - BACKGROUND INTERATIVO) -->
+    <canvas id="bg-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-40"></canvas>
+
+    <!-- 4. AURORA PARALLAX GLOW -->
+    <div class="fixed top-10 left-1/4 w-[500px] h-[500px] rounded-full bg-blue-600/10 blur-[130px] pointer-events-none z-0"></div>
+    <div class="fixed bottom-20 right-1/4 w-[450px] h-[450px] rounded-full bg-emerald-600/10 blur-[140px] pointer-events-none z-0"></div>
+
+    <!-- HEADER / NAVBAR -->
+    <header class="w-full border-b border-dark-border bg-[#06080d]/85 backdrop-blur-xl sticky top-0 z-50 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2.5 group">
+                <span class="w-2.5 h-2.5 rounded-full bg-blue-500 group-hover:scale-125 transition-transform duration-300"></span>
+                <span class="text-white text-base tracking-tight font-display font-bold">Victor Matheus</span>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-8 text-sm text-gray-400 font-medium">
+                <a href="#metricas" class="hover:text-white transition-colors">Impacto</a>
+                <a href="#projetos" class="hover:text-white transition-colors">Projetos</a>
+                <a href="#servicos" class="hover:text-white transition-colors">Serviços</a>
+                <a href="#sobre" class="hover:text-white transition-colors">Sobre</a>
+                <a href="#contato" class="hover:text-white transition-colors">Contato</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <a href="https://wa.me/5551989693906" target="_blank" rel="noopener noreferrer" 
+                   class="magnetic-btn px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-600/30 text-white font-medium text-xs sm:text-sm transition-all duration-300 flex items-center gap-2">
+                    <i class="ph ph-whatsapp-logo text-base"></i>
+                    <span>Falar no WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 py-16 sm:py-24 space-y-32 relative z-10">
+
+        <!-- HERO SECTION -->
+        <section class="space-y-8 max-w-4xl reveal active">
+            <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-blue-950/70 border border-blue-800/60 text-blue-300 text-xs font-medium backdrop-blur-md">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse glow-dot"></span>
+                <span>Desenvolvedor Full-Stack &amp; Automações com IA</span>
+            </div>
+
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.1] font-display">
+                Transformo processos manuais em <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-emerald-400">software de alto impacto.</span>
+            </h1>
+
+            <p class="text-gray-300 text-lg sm:text-xl leading-relaxed max-w-2xl font-light">
+                Desenvolvedor autodidata certificado pelo <strong>freeCodeCamp com nota máxima</strong> e graduando em Administração. Uno engenharia moderna de software à visão comercial para construir ferramentas que aceleram vendas e resolvem problemas de ponta a ponta.
+            </p>
+
+            <div class="flex flex-wrap items-center gap-4 pt-4">
+                <a href="#projetos" class="magnetic-btn px-7 py-3.5 rounded-xl bg-white text-gray-950 font-semibold hover:bg-gray-100 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2.5 text-sm shadow-xl shadow-white/5 font-sans">
+                    <span>Ver Projetos em Produção</span>
+                    <i class="ph ph-arrow-down font-bold"></i>
+                </a>
+                <a href="#contato" class="magnetic-btn px-6 py-3.5 rounded-xl bg-dark-900 text-gray-200 border border-dark-border hover:border-gray-500 hover:bg-dark-850 transition-all flex items-center gap-2 text-sm font-medium">
+                    <span>Solicitar Orçamento</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: NÚMEROS DE AUTORIDADE (COUNT UP ANIMADO) -->
+        <section id="metricas" class="reveal">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+                
+                <!-- CARD NÚMERO 1 -->
+                <div class="spotlight-card p-6 sm:p-7 text-center sm:text-left">
+                    <div class="text-3xl sm:text-5xl font-extrabold text-white font-display mb-1.5 flex items-center justify-center sm:justify-start">
+                        <span class="counter" data-target="3">0</span><span class="text-blue-400">min</span>
+                    </div>
+                    <div class="text-xs sm:text-sm font-semibold text-gray-200">Tempo de Orçamento</div>
+                    <p class="text-xs text-gray-500 mt-1">Geração de PDF com garantia vs 45 min no papel</p>
+                </div>
+
+                <!-- CARD NÚMERO 2 -->
+                <div class="spotlight-card p-6 sm:p-7 text-center sm:text-left">
+                    <div class="text-3xl sm:text-5xl font-extrabold text-white font-display mb-1.5 flex items-center justify-center sm:justify-start">
+                        <span class="counter" data-target="100">0</span><span class="text-emerald-400">%</span>
+                    </div>
+                    <div class="text-xs sm:text-sm font-semibold text-gray-200">Nota Máxima freeCodeCamp</div>
+                    <p class="text-xs text-gray-500 mt-1">Conclusão prática com excelência autodidata</p>
+                </div>
+
+                <!-- CARD NÚMERO 3 -->
+                <div class="spotlight-card p-6 sm:p-7 text-center sm:text-left">
+                    <div class="text-3xl sm:text-5xl font-extrabold text-white font-display mb-1.5 flex items-center justify-center sm:justify-start">
+                        <span class="counter" data-target="120">0</span><span class="text-purple-400">+</span>
+                    </div>
+                    <div class="text-xs sm:text-sm font-semibold text-gray-200">Pessoas Lideradas</div>
+                    <p class="text-xs text-gray-500 mt-1">Gestão internacional na Argentina &amp; KPIs</p>
+                </div>
+
+                <!-- CARD NÚMERO 4 -->
+                <div class="spotlight-card p-6 sm:p-7 text-center sm:text-left">
+                    <div class="text-3xl sm:text-5xl font-extrabold text-white font-display mb-1.5 flex items-center justify-center sm:justify-start">
+                        <span class="counter" data-target="99">0</span><span class="text-cyan-400">.8%</span>
+                    </div>
+                    <div class="text-xs sm:text-sm font-semibold text-gray-200">Uptime em Servidores</div>
+                    <p class="text-xs text-gray-500 mt-1">Alta disponibilidade com rotinas em Python</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SEÇÃO: PROJETO EM DESTAQUE COM TEXT SCRAMBLE & MOCKUP EM CSS -->
+        <section id="projetos" class="space-y-12">
+            <div class="border-b border-dark-border pb-5 flex items-baseline justify-between flex-wrap gap-2 reveal">
+                <div>
+                    <span class="text-xs font-mono text-blue-400 uppercase tracking-widest font-semibold">// 01. Aplicação em Destaque</span>
+                    <h2 class="text-2xl sm:text-4xl font-bold text-white tracking-tight mt-1 font-display scramble-text" data-text="Pintor Profissional — Plataforma SaaS & PWA">
+                        Pintor Profissional — Plataforma SaaS &amp; PWA
+                    </h2>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse glow-dot"></span>
+                    <a href="https://pintorprofissional.app.br" target="_blank" class="text-xs font-mono text-emerald-400 hover:underline">
+                        pintorprofissional.app.br ↗
+                    </a>
+                </div>
+            </div>
+
+            <!-- CARD PRINCIPAL: DETALHES + MOCKUP CSS PURO -->
+            <div class="spotlight-card p-6 sm:p-10 border border-blue-500/25 relative overflow-hidden reveal">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                    
+                    <!-- COLUNA DE TEXTO & RECURSOS -->
+                    <div class="lg:col-span-6 space-y-6">
+                        <div class="flex flex-wrap items-center gap-2">
+                            <span class="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 font-semibold text-xs border border-emerald-500/20 flex items-center gap-1.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                                No Ar em Produção
+                            </span>
+                            <span class="px-2.5 py-1 rounded-full bg-white/5 text-gray-300 text-xs border border-white/10 font-mono">
+                                React + Vite + PWA
+                            </span>
+                            <span class="px-2.5 py-1 rounded-full bg-white/5 text-gray-300 text-xs border border-white/10 font-mono">
+                                IA Técnica Especialista
+                            </span>
+                        </div>
+
+                        <div>
+                            <h3 class="text-2xl sm:text-3xl font-bold text-white tracking-tight font-display">
+                                A ferramenta que profissionalizou o mercado da pintura
+                            </h3>
+                            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mt-3">
+                                Desenvolvida para resolver um problema real que presenciei no balcão da loja de tintas: pintores perdendo clientes por orçamentos demorados e compras incorretas de materiais. O app calcula demãos e litros por $m^2$ pelas tabelas técnicas oficiais (Suvinil, Coral, Weg), emite PDFs formais com selo de garantia e conta com IA especialista para diagnóstico de problemas na parede.
+                            </p>
+                        </div>
+
+                        <!-- CARDS DE RECURSOS -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-gray-300 pt-1">
+                            <div class="flex items-center gap-2.5 bg-dark-950 p-3 rounded-lg border border-dark-border hover:border-gray-600 transition-colors">
+                                <i class="ph ph-file-pdf text-blue-400 text-lg flex-shrink-0"></i>
+                                <span>PDF Oficial com Selo de Garantia</span>
+                            </div>
+                            <div class="flex items-center gap-2.5 bg-dark-950 p-3 rounded-lg border border-dark-border hover:border-gray-600 transition-colors">
+                                <i class="ph ph-calculator text-emerald-400 text-lg flex-shrink-0"></i>
+                                <span>Cálculo Algorítmico de Demãos &amp; Galões</span>
+                            </div>
+                            <div class="flex items-center gap-2.5 bg-dark-950 p-3 rounded-lg border border-dark-border hover:border-gray-600 transition-colors">
+                                <i class="ph ph-robot text-purple-400 text-lg flex-shrink-0"></i>
+                                <span>Consultor IA 24h para Patologias</span>
+                            </div>
+                            <div class="flex items-center gap-2.5 bg-dark-950 p-3 rounded-lg border border-dark-border hover:border-gray-600 transition-colors">
+                                <i class="ph ph-wifi-slash text-amber-400 text-lg flex-shrink-0"></i>
+                                <span>Modo Offline para Uso em Obras</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-2">
+                            <a href="https://pintorprofissional.app.br" target="_blank" rel="noopener noreferrer" 
+                               class="magnetic-btn px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-600/30 text-white font-semibold text-sm inline-flex items-center gap-2.5 transition-all duration-300">
+                                <span>Acessar pintorprofissional.app.br</span>
+                                <i class="ph ph-arrow-up-right font-bold text-base"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- COLUNA DE PREVIEW TÉCNICO (MOCKUP EM CSS COM 3D TILT) -->
+                    <div class="lg:col-span-6">
+                        <div class="tilt-card group relative">
+                            <!-- Brilho ao redor do painel -->
+                            <div class="absolute -inset-1 rounded-2xl bg-gradient-to-r from-blue-600/30 to-cyan-500/20 opacity-20 blur-xl group-hover:opacity-40 transition duration-500"></div>
+
+                            <div class="relative bg-dark-950 rounded-xl overflow-hidden border border-white/10 shadow-2xl p-5 space-y-4">
+                                <!-- Top Bar do Browser Mockup -->
+                                <div class="flex items-center justify-between border-b border-dark-border pb-3">
+                                    <div class="flex items-center gap-1.5">
+                                        <span class="w-2.5 h-2.5 rounded-full bg-red-500/80"></span>
+                                        <span class="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></span>
+                                        <span class="w-2.5 h-2.5 rounded-full bg-green-500/80"></span>
+                                    </div>
+                                    <div class="px-3 py-1 rounded bg-dark-900 border border-white/5 text-[11px] font-mono text-gray-400 flex items-center gap-1.5">
+                                        <i class="ph ph-lock-key text-emerald-400"></i>
+                                        <span>https://pintorprofissional.app.br</span>
+                                    </div>
+                                    <div class="w-8"></div>
+                                </div>
+
+                                <!-- Componentes Visuais em CSS Puro -->
+                                <div class="space-y-3 font-mono text-xs">
+                                    <div class="p-3.5 bg-dark-900 rounded-lg border border-dark-border space-y-1">
+                                        <div class="text-emerald-400 font-semibold flex items-center justify-between">
+                                            <span>✓ Cálculo de Área &amp; Rendimento</span>
+                                            <span class="text-[11px] text-gray-500">Algoritmo Ativo</span>
+                                        </div>
+                                        <div class="text-gray-300 font-sans">Parede 45m² • 2 demãos • Acabamento Semibrilho</div>
+                                        <div class="text-gray-400 text-[11px]">Consumo técnico calculado: <strong>2 Galões de 3,6L</strong></div>
+                                    </div>
+
+                                    <div class="p-3.5 bg-dark-900 rounded-lg border border-dark-border space-y-1">
+                                        <div class="text-blue-400 font-semibold flex items-center justify-between">
+                                            <span>✓ Gerador de Proposta em PDF</span>
+                                            <span class="text-[11px] text-gray-500">Documento Oficial</span>
+                                        </div>
+                                        <div class="text-gray-300 font-sans">Orçamento emitido com discriminação de etapas e termo de garantia formal.</div>
+                                    </div>
+
+                                    <div class="p-3.5 bg-dark-900 rounded-lg border border-dark-border space-y-1">
+                                        <div class="text-purple-400 font-semibold flex items-center justify-between">
+                                            <span>✓ Consultor Técnico com IA</span>
+                                            <span class="text-[11px] text-gray-500">24/7 Online</span>
+                                        </div>
+                                        <div class="text-gray-300 font-sans">Diagnóstico instantâneo para umidade, fissuras e recomendação de fundos preparadores.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- DEMAIS PROJETOS COM TEXT SCRAMBLE -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                <!-- PROJETO 2: CHATBOT WHATSAPP -->
+                <div class="spotlight-card p-6 flex flex-col justify-between space-y-6 reveal">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center text-2xl">
+                            <i class="ph ph-chat-circle-dots"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs font-mono text-emerald-400 font-semibold mb-1">// AUTOMAÇÃO &amp; IA</div>
+                            <h3 class="text-lg font-bold text-white font-display scramble-text" data-text="Chatbot WhatsApp com IA & BI">Chatbot WhatsApp com IA &amp; BI</h3>
+                            <p class="text-gray-400 text-xs sm:text-sm leading-relaxed mt-2">
+                                Robô inteligente 24/7 com modelos LLM para triagem rápida, respostas contextualizadas e consolidação de métricas em dashboards de BI.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="pt-3 border-t border-dark-border flex items-center justify-between text-xs font-mono text-gray-400">
+                        <span>Python • OpenAI • Webhooks</span>
+                        <span class="text-emerald-400 font-semibold">94% CSAT</span>
+                    </div>
+                </div>
+
+                <!-- PROJETO 3: ASSISTENTE DE BALCÃO v3.3.0 - AQUARELA TINTAS -->
+                <div class="spotlight-card p-6 flex flex-col justify-between space-y-6 reveal">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center text-2xl">
+                                <i class="ph ph-desktop"></i>
+                            </div>
+                            <a href="https://github.com/victormath0305/Assistente-de-balcao-Tintas/releases/tag/v3.3.0" target="_blank" rel="noopener noreferrer" class="text-xs font-mono text-blue-400 hover:underline flex items-center gap-1">
+                                <span>v3.3.0 Release</span>
+                                <i class="ph ph-arrow-up-right"></i>
+                            </a>
+                        </div>
+                        <div>
+                            <div class="text-xs font-mono text-blue-400 font-semibold mb-1">// DESKTOP NATIVO • AQUARELA TINTAS</div>
+                            <h3 class="text-lg font-bold text-white font-display scramble-text" data-text="Assistente de Balcão v3.3.0">Assistente de Balcão v3.3.0</h3>
+                            <p class="text-gray-400 text-xs sm:text-sm leading-relaxed mt-2">
+                                Sistema Desktop C# (.NET WinForms) com 65 Boletins PDF auditados (8 marcas), regras reais de embalagens (+7% quebra), catálise bicomponente WEG (A+B + Pot-Life), diagnóstico de patologias (F10) e impressão de ficha A4/80mm para o pintor (F12).
+                            </p>
+                        </div>
+                    </div>
+                    <div class="pt-3 border-t border-dark-border flex items-center justify-between text-xs font-mono text-gray-400">
+                        <span>C# .NET • WinForms • 65 PDFs</span>
+                        <span class="text-blue-400 font-semibold">v3.3.0 Oficial</span>
+                    </div>
+                </div>
+
+                <!-- PROJETO 4: SERVIDORES DAYZ -->
+                <div class="spotlight-card p-6 flex flex-col justify-between space-y-6 reveal">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center text-2xl">
+                            <i class="ph ph-game-controller"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs font-mono text-purple-400 font-semibold mb-1">// ENGENHARIA DE REDES</div>
+                            <h3 class="text-lg font-bold text-white font-display scramble-text" data-text="Infraestrutura & Mods (DayZ)">Infraestrutura &amp; Mods (DayZ)</h3>
+                            <p class="text-gray-400 text-xs sm:text-sm leading-relaxed mt-2">
+                                Gestão Full-Stack e modding em C++/C# para servidor multiplayer online ("S.U.S"). Scripts Python para deploy automático, rotinas de failover e proteção contra crashes.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="pt-3 border-t border-dark-border flex items-center justify-between text-xs font-mono text-gray-400">
+                        <span>C++ • C# • Python • Redes</span>
+                        <span class="text-purple-400 font-semibold">99.8% Uptime</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SEÇÃO: SERVIÇOS QUE OFEREÇO -->
+        <section id="servicos" class="space-y-12">
+            <div class="border-b border-dark-border pb-5 flex items-baseline justify-between flex-wrap gap-2 reveal">
+                <div>
+                    <span class="text-xs font-mono text-blue-400 uppercase tracking-widest font-semibold">// 02. Especialidades</span>
+                    <h2 class="text-2xl sm:text-4xl font-bold text-white tracking-tight mt-1 font-display scramble-text" data-text="O que posso construir para o seu negócio">
+                        O que posso construir para o seu negócio
+                    </h2>
+                </div>
+                <span class="text-xs text-gray-500 font-mono">Alta performance e entrega rápida</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- SERVIÇO 1 -->
+                <div class="spotlight-card p-6 space-y-4 reveal">
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center text-2xl">
+                        <i class="ph ph-globe"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-base font-display">Sites &amp; Aplicações Web</h3>
+                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
+                        Landing pages de altíssima conversão, portfólios sofisticados e PWAs rápidos que rodam no computador e celular, inclusive sem sinal de internet.
+                    </p>
+                </div>
+
+                <!-- SERVIÇO 2 -->
+                <div class="spotlight-card p-6 space-y-4 reveal">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center text-2xl">
+                        <i class="ph ph-whatsapp-logo"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-base font-display">Automação de WhatsApp &amp; IA</h3>
+                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
+                        Robôs inteligentes para responder clientes imediatamente, qualificar orçamentos e agendar reuniões sem sobrecarregar sua equipe humana.
+                    </p>
+                </div>
+
+                <!-- SERVIÇO 3 -->
+                <div class="spotlight-card p-6 space-y-4 reveal">
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center text-2xl">
+                        <i class="ph ph-game-controller"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-base font-display">Programação para Jogos</h3>
+                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
+                        Desenvolvimento de mods em C++/C#, configuração de servidores dedicados com alta concorrência e scripts automáticos de sustentação em Python.
+                    </p>
+                </div>
+
+                <!-- SERVIÇO 4 -->
+                <div class="spotlight-card p-6 space-y-4 reveal">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center text-2xl">
+                        <i class="ph ph-gear-six"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-base font-display">Softwares Sob Medida</h3>
+                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
+                        Calculadoras de balcão e ferramentas digitais personalizadas para equipes comerciais acelerarem o fechamento de propostas técnicas.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: SOBRE MIM (COM LINHA DO TEMPO LUMINOSA) -->
+        <section id="sobre" class="space-y-10 relative">
+            <div class="border-b border-dark-border pb-5 reveal">
+                <span class="text-xs font-mono text-blue-400 uppercase tracking-widest font-semibold">// 03. Trajetória</span>
+                <h2 class="text-2xl sm:text-4xl font-bold text-white tracking-tight mt-1 font-display scramble-text" data-text="Quem sou eu e como trabalho">
+                    Quem sou eu e como trabalho
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start relative">
+                <!-- LINHA DO TEMPO COM LUZ DE SCROLL -->
+                <div class="timeline-track hidden lg:block"></div>
+                <div id="timeline-glow-fill" class="timeline-fill hidden lg:block"></div>
+
+                <div class="lg:col-span-8 space-y-5 text-gray-300 text-sm sm:text-base leading-relaxed lg:pl-6 reveal">
+                    <p>
+                        Sempre tive fascínio por computação e por entender como os sistemas funcionam a fundo. Em vez de ficar na teoria, estudei por conta própria na plataforma mundial do <strong class="text-white">freeCodeCamp.org</strong>, onde passei dias e noites codando até concluir todas as certificações práticas com <strong class="text-emerald-400">nota máxima</strong>. Desde então, sigo me aprofundando diariamente nas tecnologias mais modernas para entregar ferramentas robustas e rentáveis aos meus clientes.
+                    </p>
+                    <p>
+                        Minha principal vantagem é unir essa disciplina técnica com uma vivência sólida de negócios. Atuei na Argentina liderando uma operação voluntária com <strong class="text-white">mais de 120 voluntários internacionais</strong>, desenvolvendo liderança sob pressão, gestão de KPIs e conquistando <strong class="text-white">fluência absoluta no espanhol</strong>.
+                    </p>
+                    <p>
+                        Mais tarde, na gestão comercial da Aquarela Tintas, vi no balcão pintores e clientes perdendo negócios por orçamentos manuais lentos. Foi dessa necessidade real que programei e lancei o <strong class="text-white">Pintor Profissional</strong>, que hoje roda online ajudando profissionais a emitir propostas com garantia em minutos.
+                    </p>
+                </div>
+
+                <!-- CARDS DE AUTORIDADE LATERAL -->
+                <div class="lg:col-span-4 space-y-3 font-mono text-xs reveal">
+                    <div class="spotlight-card p-4 space-y-1">
+                        <span class="text-emerald-400 font-bold block">// FORMAÇÃO TÉCNICA</span>
+                        <div class="text-white font-sans font-semibold text-sm">freeCodeCamp.org</div>
+                        <div class="text-gray-400">Nota máxima nas certificações práticas</div>
+                    </div>
+
+                    <div class="spotlight-card p-4 space-y-1">
+                        <span class="text-blue-400 font-bold block">// GRADUAÇÃO</span>
+                        <div class="text-white font-sans font-semibold text-sm">Administração de Empresas</div>
+                        <div class="text-gray-400">Centro Universitário UniFatecie</div>
+                    </div>
+
+                    <div class="spotlight-card p-4 space-y-1">
+                        <span class="text-purple-400 font-bold block">// ESPECIALIZAÇÃO</span>
+                        <div class="text-white font-sans font-semibold text-sm">IA para Negócios &amp; BI</div>
+                        <div class="text-gray-400">UniFatecie &amp; Liderança SEBRAE</div>
+                    </div>
+
+                    <div class="spotlight-card p-4 space-y-1">
+                        <span class="text-amber-400 font-bold block">// IDIOMAS</span>
+                        <div class="text-white font-sans font-semibold text-sm">Espanhol Fluente &amp; Inglês Avançado</div>
+                        <div class="text-gray-400">Vivência internacional de 2 anos</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: FORMULÁRIO DE ORÇAMENTO / CONTATO DIRETO -->
+        <section id="contato" class="space-y-8 pt-4">
+            <div class="border-b border-dark-border pb-5 reveal">
+                <span class="text-xs font-mono text-blue-400 uppercase tracking-widest font-semibold">// 04. Contratação</span>
+                <h2 class="text-2xl sm:text-4xl font-bold text-white tracking-tight mt-1 font-display scramble-text" data-text="Inicie seu projeto comigo">
+                    Inicie seu projeto comigo
+                </h2>
+                <p class="text-gray-400 text-sm mt-1">
+                    Preencha o formulário abaixo e receba um retorno imediato direto no WhatsApp.
+                </p>
+            </div>
+
+            <div class="spotlight-card p-6 sm:p-10 max-w-xl mx-auto shadow-2xl reveal">
+                <form id="project-form" onsubmit="sendToWhatsApp(event)" class="space-y-5 text-xs sm:text-sm">
+                    <div>
+                        <label class="block text-gray-300 mb-1.5 font-medium">1. O que você precisa construir?</label>
+                        <select id="form-type" class="w-full bg-dark-950 border border-dark-border rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors">
+                            <option value="Criação de Site ou Aplicação Web (PWA)">Criação de Site ou Aplicação Web (PWA)</option>
+                            <option value="Automação de WhatsApp com Robô / IA">Automação de WhatsApp com Robô / IA</option>
+                            <option value="Servidor de Jogos ou Modding (DayZ)">Servidor de Jogos ou Modding (DayZ)</option>
+                            <option value="Software Personalizado para Balcão ou Vendas">Software Personalizado para Balcão ou Vendas</option>
+                            <option value="Outro Desafio Tecnológico">Outro Desafio Tecnológico</option>
+                        </select>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-gray-300 mb-1.5 font-medium">2. Seu Nome ou Empresa:</label>
+                            <input type="text" id="form-name" required placeholder="Ex: Carlos Silva" 
+                                   class="w-full bg-dark-950 border border-dark-border rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-gray-300 mb-1.5 font-medium">3. Seu WhatsApp ou E-mail:</label>
+                            <input type="text" id="form-contact" required placeholder="Ex: (53) 99183-9984" 
+                                   class="w-full bg-dark-950 border border-dark-border rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-300 mb-1.5 font-medium">4. Conte um pouco sobre o projeto:</label>
+                        <textarea id="form-desc" rows="3" placeholder="Ex: Preciso de uma landing page para captar clientes ou um bot no WhatsApp para responder orçamentos..." 
+                                  class="w-full bg-dark-950 border border-dark-border rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors"></textarea>
+                    </div>
+
+                    <div class="pt-2">
+                        <button type="submit" class="magnetic-btn w-full py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition-all duration-300 flex items-center justify-center gap-2.5 text-sm sm:text-base shadow-xl shadow-emerald-950/80 hover:scale-[1.01] active:scale-[0.99]">
+                            <i class="ph ph-whatsapp-logo text-xl"></i>
+                            <span>ENVIAR PROJETO NO WHATSAPP</span>
+                        </button>
+                    </div>
+
+                    <p class="text-center text-xs text-gray-500 pt-1">
+                        Ou envie diretamente para: <a href="mailto:victor.matheus2018@outlook.com" class="text-gray-300 hover:text-white underline">victor.matheus2018@outlook.com</a>
+                    </p>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-dark-border bg-dark-950 py-12 mt-28 relative z-10">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-6 text-xs text-gray-500">
+            <div>
+                © 2026 Victor Matheus Barros Trindade • Rio Grande, RS
+            </div>
+            <div class="flex items-center gap-6">
+                <a href="https://github.com/victormath0305" target="_blank" rel="noopener noreferrer" class="hover:text-white transition">GitHub</a>
+                <a href="https://pintorprofissional.app.br" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 transition">Pintor Profissional</a>
+                <a href="https://wa.me/5551989693906" target="_blank" rel="noopener noreferrer" class="hover:text-white transition">WhatsApp</a>
+                <a href="mailto:victor.matheus2018@outlook.com" class="hover:text-white transition">E-mail</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVITY JAVASCRIPT: OPÇÕES 2, 3 E 4 -->
+    <script>
+        // ------------------------------------------------------------------------
+        // OPÇÃO 2: MICRO-INTERAÇÕES FÍSICAS (CURSOR PERSONALIZADO & BOTÕES MAGNÉTICOS)
+        // ------------------------------------------------------------------------
+        let mouseX = -100, mouseY = -100;
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        // Efeito Botão Magnético
+        const magneticBtns = document.querySelectorAll('.magnetic-btn');
+        magneticBtns.forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                btn.style.transform = `translate(${x * 0.28}px, ${y * 0.28}px)`;
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'translate(0px, 0px)';
+                btn.style.transition = 'transform 0.35s cubic-bezier(0.2, 0, 0, 1)';
+            });
+            btn.addEventListener('mouseenter', () => {
+                btn.style.transition = 'none';
+            });
+        });
+
+        // ------------------------------------------------------------------------
+        // OPÇÃO 3: TEXT SCRAMBLE / HACKER DECODING EFFECT
+        // ------------------------------------------------------------------------
+        class TextScramble {
+            constructor(el) {
+                this.el = el;
+                this.chars = '!<>-_\\/[]{}—=+*^?#________';
+                this.update = this.update.bind(this);
+            }
+            setText(newText) {
+                const oldText = this.el.innerText;
+                const length = Math.max(oldText.length, newText.length);
+                const promise = new Promise((resolve) => this.resolve = resolve);
+                this.queue = [];
+                for (let i = 0; i < length; i++) {
+                    const from = oldText[i] || '';
+                    const to = newText[i] || '';
+                    const start = Math.floor(Math.random() * 12);
+                    const end = start + Math.floor(Math.random() * 14);
+                    this.queue.push({ from, to, start, end });
+                }
+                cancelAnimationFrame(this.frameRequest);
+                this.frame = 0;
+                this.update();
+                return promise;
+            }
+            update() {
+                let output = '';
+                let complete = 0;
+                for (let i = 0, n = this.queue.length; i < n; i++) {
+                    let { from, to, start, end, char } = this.queue[i];
+                    if (this.frame >= end) {
+                        complete++;
+                        output += to;
+                    } else if (this.frame >= start) {
+                        if (!char || Math.random() < 0.28) {
+                            char = this.chars[Math.floor(Math.random() * this.chars.length)];
+                            this.queue[i].char = char;
+                        }
+                        output += `<span class="text-cyan-400 font-mono">${char}</span>`;
+                    } else {
+                        output += from;
+                    }
+                }
+                this.el.innerHTML = output;
+                if (complete === this.queue.length) {
+                    this.resolve();
+                } else {
+                    this.frameRequest = requestAnimationFrame(this.update);
+                    this.frame++;
+                }
+            }
+        }
+
+        const scrambleElements = document.querySelectorAll('.scramble-text');
+        scrambleElements.forEach(el => {
+            const originalText = el.getAttribute('data-text') || el.innerText;
+            const fx = new TextScramble(el);
+            el.addEventListener('mouseenter', () => {
+                fx.setText(originalText);
+            });
+        });
+
+        // LINHA DO TEMPO COM LUZ DE SCROLL
+        const sobreSection = document.getElementById('sobre');
+        const timelineGlow = document.getElementById('timeline-glow-fill');
+        window.addEventListener('scroll', () => {
+            if (sobreSection && timelineGlow) {
+                const rect = sobreSection.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+                if (rect.top <= windowHeight && rect.bottom >= 0) {
+                    const totalHeight = rect.height;
+                    const scrolledIntoSection = Math.max(0, windowHeight - rect.top);
+                    const progress = Math.min(100, Math.max(0, (scrolledIntoSection / totalHeight) * 100));
+                    timelineGlow.style.height = `${progress}%`;
+                }
+            }
+        });
+
+        // ------------------------------------------------------------------------
+        // OPÇÃO 4: CANVAS DE PARTÍCULAS / CONSTELLATION NETWORK
+        // ------------------------------------------------------------------------
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let particles = [];
+        const particleCount = window.innerWidth < 768 ? 32 : 65;
+
+        function resizeCanvas() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.45;
+                this.vy = (Math.random() - 0.5) * 0.45;
+                this.radius = Math.random() * 1.5 + 0.8;
+                this.color = Math.random() > 0.4 ? 'rgba(59, 130, 246,' : 'rgba(16, 185, 129,';
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+
+                // Repulsão suave do mouse
+                const dx = mouseX - this.x;
+                const dy = mouseY - this.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 110) {
+                    const angle = Math.atan2(dy, dx);
+                    const force = (110 - dist) / 110;
+                    this.x -= Math.cos(angle) * force * 1.8;
+                    this.y -= Math.sin(angle) * force * 1.8;
+                }
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = this.color + ' 0.65)';
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+
+        function animateCanvas() {
+            ctx.clearRect(0, 0, width, height);
+
+            // Desenho de conexões sutis entre partículas próximas
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < 115) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        const alpha = (1 - dist / 115) * 0.18;
+                        ctx.strokeStyle = `rgba(59, 130, 246, ${alpha})`;
+                        ctx.lineWidth = 0.75;
+                        ctx.stroke();
+                    }
+                }
+            }
+
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+            }
+
+            requestAnimationFrame(animateCanvas);
+        }
+        animateCanvas();
+
+        // ------------------------------------------------------------------------
+        // RECURSOS GERAIS: SCROLL PROGRESS, SPOTLIGHT, 3D TILT, COUNTERS & FORM
+        // ------------------------------------------------------------------------
+        window.addEventListener('scroll', () => {
+            const winScroll = document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('scroll-progress').style.width = scrolled + '%';
+        });
+
+        // Spotlight nos cards
+        const cards = document.querySelectorAll('.spotlight-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
+        // 3D Tilt no Mockup
+        const tiltCards = document.querySelectorAll('.tilt-card');
+        tiltCards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = ((y - centerY) / centerY) * -6;
+                const rotateY = ((x - centerX) / centerX) * 6;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+            });
+        });
+
+        // Scroll Reveal
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.12 });
+        reveals.forEach(el => observer.observe(el));
+
+        // Animated Counters
+        let counted = false;
+        const metricSection = document.getElementById('metricas');
+        if (metricSection) {
+            const counterObserver = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting && !counted) {
+                    counted = true;
+                    document.querySelectorAll('.counter').forEach(counter => {
+                        const target = +counter.getAttribute('data-target');
+                        let count = 0;
+                        const step = Math.max(1, Math.ceil(target / 40));
+                        const timer = setInterval(() => {
+                            count += step;
+                            if (count >= target) {
+                                counter.innerText = target;
+                                clearInterval(timer);
+                            } else {
+                                counter.innerText = count;
+                            }
+                        }, 25);
+                    });
+                }
+            }, { threshold: 0.2 });
+            counterObserver.observe(metricSection);
+        }
+
+        // WhatsApp Form Dispatch
+        function sendToWhatsApp(e) {
+            e.preventDefault();
+            const type = document.getElementById('form-type').value;
+            const name = document.getElementById('form-name').value;
+            const contact = document.getElementById('form-contact').value;
+            const desc = document.getElementById('form-desc').value;
+
+            const message = `Olá Victor! Vi seu portfólio e gostaria de um orçamento:%0A%0A` +
+                            `📌 *Tipo de Projeto:* ${encodeURIComponent(type)}%0A` +
+                            `👤 *Nome/Empresa:* ${encodeURIComponent(name)}%0A` +
+                            `📞 *Contato:* ${encodeURIComponent(contact)}%0A` +
+                            `📝 *Detalhes:* ${encodeURIComponent(desc || 'Sem detalhes adicionais.')}`;
+
+            const url = `https://wa.me/5551989693906?text=${message}`;
+            window.open(url, '_blank');
+        }
+    </script>
+
+</body>
+</html>
