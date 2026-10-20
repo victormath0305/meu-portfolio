@@ -8,7 +8,7 @@
     <img src="https://img.shields.io/badge/SaaS_PWA-Pintor_Profissional-06b6d4?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Pintor Profissional">
   </a>
   <a href="https://github.com/victormath0305/Assistente-de-balcao-Tintas">
-    <img src="https://img.shields.io/badge/Desktop_App-Assistente_de_Balcão_v3.3.0-2563eb?style=for-the-badge&logo=windows&logoColor=white" alt="Assistente de Balcão v3.3.0">
+    <img src="https://img.shields.io/badge/Desktop_App-Assistente_de_Balcão_v3.4.0-2563eb?style=for-the-badge&logo=windows&logoColor=white" alt="Assistente de Balcão v3.4.0">
   </a>
   <a href="https://wa.me/5551989693906">
     <img src="https://img.shields.io/badge/WhatsApp-(51)_98969--3906-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="WhatsApp">
@@ -41,7 +41,7 @@ Meu diferencial é unir **visão estratégica de negócios e execução técnica
 | Categoria | Tecnologias e Ferramentas |
 | :--- | :--- |
 | **Linguagens & Core** | ![C#](https://img.shields.io/badge/-C%23_(.NET_Framework)-239120?style=flat-square&logo=csharp&logoColor=white) ![Python](https://img.shields.io/badge/-Python_3.11+-3776AB?style=flat-square&logo=python&logoColor=white) ![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black) ![C++](https://img.shields.io/badge/-C++-00599C?style=flat-square&logo=c%2B%2B&logoColor=white) ![HTML5](https://img.shields.io/badge/-HTML5-E34F26?style=flat-square&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/-CSS3-1572B6?style=flat-square&logo=css3&logoColor=white) |
-| **Desktop & Engenharia** | ![WinForms](https://img.shields.io/badge/-WinForms_%2B_GDI%2B_Double--Buffered-0078D6?style=flat-square&logo=windows&logoColor=white) ![PyQt6](https://img.shields.io/badge/-PyQt6-41CD52?style=flat-square&logo=qt&logoColor=white) ![SQLite](https://img.shields.io/badge/-SQLite3-003B57?style=flat-square&logo=sqlite&logoColor=white) ![Inno Setup](https://img.shields.io/badge/-Inno_Setup_Installer-0078D6?style=flat-square&logo=windows&logoColor=white) |
+| **Desktop & Engenharia** | ![WinForms](https://img.shields.io/badge/-WinForms_%2B_GDI%2B_Double--Buffered-0078D6?style=flat-square&logo=windows&logoColor=white) ![PyQt6](https://img.shields.io/badge/-PyQt6-41CD52?style=flat-square&logo=qt&logoColor=white) ![SQLite](https://img.shields.io/badge/-SQLite3-003B57?style=flat-square&logo=sqlite&logoColor=white) ![MySQL](https://img.shields.io/badge/-MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white) ![Electron](https://img.shields.io/badge/-Electron-47848F?style=flat-square&logo=electron&logoColor=white) ![Node.js](https://img.shields.io/badge/-Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white) ![Inno Setup](https://img.shields.io/badge/-Inno_Setup_Installer-0078D6?style=flat-square&logo=windows&logoColor=white) |
 | **Web, Mobile & IA** | ![React](https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=react&logoColor=black) ![TailwindCSS](https://img.shields.io/badge/-TailwindCSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white) ![PWA](https://img.shields.io/badge/-PWA_Offline--First-5A0FC8?style=flat-square&logo=pwa&logoColor=white) ![OpenAI](https://img.shields.io/badge/-OpenAI_%26_Gemini_API-412991?style=flat-square&logo=openai&logoColor=white) |
 | **Negócios & Gestão** | `Vendas B2B` • `Consultoria Técnica de Tintas (Industrial/Imobiliária)` • `Key Account Management` • `Business Intelligence (BI)` • `Liderança Operacional` |
 
@@ -53,7 +53,7 @@ Meu diferencial é unir **visão estratégica de negócios e execução técnica
 
 ### 🌟 1. Pintor Profissional — PWA & Plataforma de Gestão (SaaS em Produção)
 > **Acesse a aplicação no ar:** 🔗 [pintorprofissional.app.br](https://pintorprofissional.app.br)  
-> **Repositório:** [victormath0305/Pintor-profissinal-pwa](https://github.com/victormath0305/Pintor-profissinal-pwa)
+
 
 * **O Problema:** Profissionais de pintura e acabamento enfrentam grandes dificuldades para calcular rendimento de materiais com precisão, sofrem com a falta de padronização na emissão de orçamentos e perdem clientes por propostas informais via texto.
 * **A Solução:** Desenvolvimento de um PWA (*Progressive Web App*) completo, moderno e instalável em smartphones e computadores:
@@ -66,14 +66,14 @@ Meu diferencial é unir **visão estratégica de negócios e execução técnica
 
 ---
 
-### 🎨 2. Assistente de Balcão — Tintas (`v3.3.0`) — Sistema Desktop de Consultoria & Cálculo (Aquarela Tintas)
+### 🎨 2. Assistente de Balcão — Tintas (`v3.4.0`) — Sistema Desktop de Consultoria & Cálculo (Aquarela Tintas)
 > **Repositório Oficial:** 🔗 [victormath0305/Assistente-de-balcao-Tintas](https://github.com/victormath0305/Assistente-de-balcao-Tintas)  
-> **Download Oficial (`v3.3.0`):** 📦 [Instalador Windows + Executável Standalone (`Releases`)](https://github.com/victormath0305/Assistente-de-balcao-Tintas/releases/tag/v3.3.0)
+> **Download Oficial (`v3.4.0`):** 📦 [Instalador Windows + Executável Standalone (`Releases`)](https://github.com/victormath0305/Assistente-de-balcao-Tintas/releases)
 
 * **O Problema:** No atendimento de balcão de lojas de tintas, erros no cálculo de metragem, dúvidas sobre proporções de diluentes/catalisadores industriais e indicações incorretas de preparação de superfície geram devoluções, prejuízos e filas.
-* **A Solução de Engenharia (`v3.3.0`):** Aplicativo Desktop nativo para Windows desenvolvido em **C# (.NET Framework / WinForms + GDI+ Double-Buffered)** e empacotado com **Inno Setup v6+**, auditado com **65 Boletins Técnicos oficiais em PDF** de 8 fabricantes:
+* **A Solução de Engenharia (`v3.4.0`):** Aplicativo Desktop nativo para Windows desenvolvido em **C# (.NET Framework / WinForms + GDI+ Double-Buffered)** e empacotado com **Inno Setup v6+**, auditado com **65 Boletins Técnicos oficiais em PDF** de 8 fabricantes:
   * 🏷️ **1. Abas Inteligentes por Marca (65 Produtos Auditados):** Filtro rápido com identidade visual dedicada para **Coral**, **Suvinil**, **WEG** (*Linha Industrial & Marítima Bicomponente: W-POXI, W-THANE, LACKPOXI, GALWEG*), **Montana**, **Sayerlack**, **Cetol**, **Hydronorth** e **Allchem**.
-  * 🪣 **2. Placar Visual de Embalagens (+7% de Quebra) & Regra Real de Fabricação (`ContainerRule`):** Distribui automaticamente o volume necessário aplicando **+7% de margem técnica** e respeitando as regras reais da fábrica:
+  * 🪣 **2. Placar Visual de Embalagens (0% de Perda) & Regra Real de Fabricação (`ContainerRule`):** Distribui automaticamente o volume necessário sobre a **área exata do Boletim Técnico (0% de perda)** e respeitando as regras reais da fábrica:
     * *Acrílicos, Pisos e Impermeabilizantes:* Calculam em **Latas de 18L, Galões de 3,6L e Quartos de 900ml**.
     * *Esmaltes, Vernizes, Stains e Fundos Madeira/Metal:* Bloqueiam automaticamente a lata de 18L (`NÃO FABRICA 18L`), calculando exclusivamente em **Galões de 3,6L e Quartos de 900ml**.
     * *Linha Industrial WEG (Epóxi e Poliuretano):* Calcula exclusivamente em **Kits Galão de 3,6L (Componente A + Catalisador B)**.
@@ -103,11 +103,38 @@ Meu diferencial é unir **visão estratégica de negócios e execução técnica
 
 ---
 
+### 🗂️ 5. CRM Aquarela — WhatsApp Comercial, Catálogo Autcom & Sistema Tintométrico
+> **Repositório:** 🔗 [victormath0305/CRM](https://github.com/victormath0305/CRM)
+
+* **O Problema:** O vendedor precisa responder clientes no WhatsApp enquanto consulta códigos, preços, descontos e fórmulas de tintas de máquina (base + corantes) no ERP, alternando janelas o tempo todo.
+* **A Solução:** Aplicação desktop para Windows que unifica todo o fluxo em uma única tela:
+  * 💬 **WhatsApp Web embarcado** com sessão persistente e extensão **WHATS CRM** (Kanban, funil de vendas, respostas rápidas, agendamentos e etiquetas).
+  * 📦 **Painel de produtos (`F6`)** com busca instantânea (< 15ms) por nome, código, EAN, cor ou categoria, com filtros por marca e preços sincronizados com o ERP **Autcom**.
+  * 🎨 **Sistema Tintométrico (`F8`)** para **Coral, Suvinil e WEG**, somando em tempo real o preço da base com a dosagem em `ml` de cada colorante.
+  * 🏷️ **Desconto % inline** e inserção do orçamento formatado direto no chat, sem expor o estoque interno ao cliente.
+  * 🔔 Notificações nativas do Windows e instalador `.exe` para múltiplos computadores da loja.
+* **Tecnologias:** `Electron` `React` `Vite` `Node.js` `SQLite` `MySQL` `Inno Setup / Instalador Windows`.
+
+---
+
+### 🌐 6. Núcleo Browser (`v0.9.0`) — Navegador Desktop Modular baseado em Chromium
+> **Repositório:** 🔗 [victormath0305/Nucleo-Browser](https://github.com/victormath0305/Nucleo-Browser)
+
+* **O Desafio:** Construir um navegador desktop real, rápido, privado e customizável, com subsistemas nativos desenvolvidos do zero e segurança por padrão.
+* **A Solução:** Navegador para Windows sobre **Chromium + Electron** com arquitetura multiprocesso e módulos desacoplados:
+  * 🔐 **Permissões por Site & Central de Privacidade (`nucleo://privacy`)**, com normalização estrita de origem e proteção anti-spoofing.
+  * ⬇️ **Gerenciador de Downloads (`nucleo://downloads`)** com velocidade média (EMA), ETA, pausa/retomada e sanitização contra *path traversal*.
+  * 🗂️ **Workspaces de abas**, **bloqueador de anúncios (Núcleo Shield)** e **suporte a extensões Chromium (MV2/MV3)**.
+  * 🛡️ `sandbox: true`, `contextIsolation: true` e `nodeIntegration: false` em todo o renderizador.
+* **Tecnologias:** `Electron` `Chromium` `JavaScript` `HTML/CSS` `IPC seguro`.
+
+---
+
 ## 💼 Experiência Profissional & Liderança
 
 ### **Aquarela Tintas Ltda.** | Representante Comercial e Liderança Interina
 *Outubro 2021 – Presente | Rio Grande, RS*
-* **Engenharia de Software Aplicada ao Varejo:** Criação e implementação do **Assistente de Balcão (`v3.3.0`)**, padronizando o cálculo de embalagens, catálise bicomponente WEG, fichas de impressão para pintores e consultoria de patologias na loja.
+* **Engenharia de Software Aplicada ao Varejo:** Criação e implementação do **Assistente de Balcão (`v3.4.0`)** e do **CRM Aquarela** (WhatsApp + catálogo Autcom + sistema tintométrico), padronizando o cálculo de embalagens, catálise bicomponente WEG, fichas de impressão para pintores, consultoria de patologias e envio de orçamentos na loja.
 * **Liderança Operacional & Gestão:** Atuação direta ao lado da gerência, assumindo a gestão integral da unidade em períodos de ausência do gestor, respondendo por decisões administrativas e resolução de problemas críticos.
 * **Desenvolvimento B2B & Prospecção:** Implantação pioneira da marca na região sul do RS, desenvolvendo carteira de clientes B2B do absoluto zero e negociando contratos de alto volume com construtoras, condomínios e indústrias.
 * **Consultoria Técnica & Key Accounts:** Gestão de contas estratégicas prestando assessoria técnica em especificação de tintas imobiliárias, marítimas e industriais.
@@ -138,7 +165,7 @@ Seja para contratação, projetos de tecnologia, consultoria em automação/IA o
 - ✉️ **E-mail:** [victor.matheus2018@outlook.com](mailto:victor.matheus2018@outlook.com)
 - 🌐 **GitHub:** [github.com/victormath0305](https://github.com/victormath0305)
 - 🚀 **App Pintor Profissional:** [pintorprofissional.app.br](https://pintorprofissional.app.br)
-- 🖥️ **Download Assistente de Balcão (`v3.3.0`):** [github.com/victormath0305/Assistente-de-balcao-Tintas/releases](https://github.com/victormath0305/Assistente-de-balcao-Tintas/releases)
+- 🖥️ **Download Assistente de Balcão (`v3.4.0`):** [github.com/victormath0305/Assistente-de-balcao-Tintas/releases](https://github.com/victormath0305/Assistente-de-balcao-Tintas/releases)
 
 <div align="center">
   <sub>Construído com foco em inovação, eficiência e resultados de negócios. © 2026 Victor Matheus.</sub>
